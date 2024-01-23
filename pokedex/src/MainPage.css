@@ -48,7 +48,12 @@
     background-color: rgb(245, 73, 26);
     margin-left: 10px;
     color:aliceblue;
-    font-size: 20px;
+    padding: 5px;
+    font-size: 25px;
+    text-align: center;
+    border-radius: 10px;
+    height:55px;
+    width:55px;
 }
 
 .MPText2{
@@ -73,4 +78,42 @@
     font-size: larger;
     padding: 10px;
     background-color: rgb(96, 94, 94);
+}
+
+.MPFilter{
+    margin: 10px;
+}
+
+
+.MPSurprise{
+    background-color: rgb(5, 178, 187);
+    color: aliceblue;
+    text-align: center;
+    width: 350px;
+    height: 50px;
+    padding-top:5px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.MPPokeLogo{
+    background-color: rgb(52, 51, 51);
+    color: aliceblue;
+    font-size: 35px;
+    width: 40px;
+    padding: 0px 5px 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.MPDropdown{
+    height: 63px;
+    width:310px;
+    font-size: larger;
+    padding: 5px;
+    background-color: rgb(52, 51, 51);
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    color: aliceblue;
 }
