@@ -1,0 +1,76 @@
+
+
+.MPContainer1{
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 70px;
+    font-size: 25px;
+
+}
+
+.MPMenuIcon{
+    margin-top: 10px;
+}
+
+.MPTitle{
+    margin-top: 20px;
+}
+
+.MPLoginIcon{
+    margin-top: 10px;
+}
+
+.MPContainer2{
+    background-color: rgb(52, 51, 51);
+    color: aliceblue;
+}
+
+.MPText1{
+    padding: 20px;
+    font-size: larger;
+    text-align: center;
+    
+}
+
+.MPSearch{
+    justify-content: center;
+    padding: 0px 10px 20px 10px;
+}
+
+.MPSearchText{
+    height: 55px;
+    width:250px;
+    border-radius: 10px;
+}
+
+.MPSearchButton{
+    background-color: rgb(245, 73, 26);
+    margin-left: 10px;
+    color:aliceblue;
+    font-size: 20px;
+}
+
+.MPText2{
+    font-size: larger;
+    text-align: center;
+    width:400px;
+}
+
+.MPFeature{
+    background-color: rgb(5, 167, 40);
+    padding: 10px;
+    margin-top:20px;
+    width:300px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-size: larger;
+}
+
+.MPAdvanced{
+    margin-top: 20px;
+    text-align: center;
+    font-size: larger;
+    padding: 10px;
+    background-color: rgb(96, 94, 94);
+}
