@@ -59,7 +59,6 @@
 .MPText2{
     font-size: larger;
     text-align: center;
-    width:400px;
 }
 
 .MPFeature{
@@ -82,6 +81,7 @@
 
 .MPFilter{
     margin: 10px;
+    
 }
 
 
@@ -116,4 +116,43 @@
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     color: aliceblue;
+}
+
+.MPList{
+   list-style: none;
+}
+
+.MPImage{
+    background-color: rgb(224, 225, 225);
+    width: 350px;
+}
+
+.MPPokeNum{
+    font-size: medium;
+    color: rgb(100, 99, 99);
+}
+
+.MPPokeName{
+    font-size: larger;
+}
+
+.MPAbility{
+    width: 130px;
+    background-color: palevioletred;
+    padding: 0px 0px 0px;
+    margin-right:10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.MPLoadMore{
+    background-color: rgb(5, 178, 187);
+    color: aliceblue;
+    text-align: center;
+    width: 350px;
+    height: 50px;
+    padding-top:5px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin:10px;
 }

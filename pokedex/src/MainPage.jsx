@@ -15,7 +15,7 @@ function MainPage() {
             <div className='MPMenuIcon'>
                 <GiHamburgerMenu/>
             </div>
-            <div className='MPTitle'><h3>Pokedex</h3></div>
+            <div className='MPTitle'><h3>Pokédex</h3></div>
             <div className='MPLoginIcon'>
                 <FaUserCircle/>
             </div>
@@ -26,9 +26,9 @@ function MainPage() {
                 <div><input type='text' className='MPSearchText'></input></div>
                 <div><div className='MPSearchButton'><FaSearch/></div></div>
             </div>
-            <div className='MPText2'> <p>Use the Advanced Search to explore Pokémon by type, weakness, Ability, and more!</p></div>
+            <div className='MPText2'>Use the Advanced Search to explore Pokémon by type, weakness, Ability, and more!</div>
             <div className='MPFeature'>
-                <p>Search for a Pokemon by name or its National Pokedex number.</p>
+                <p>Search for a Pokémon by name or its National Pokédex number.</p>
             </div>
             <div className='MPAdvanced'>Show Advanced Search<div className='MPExpand'><RiArrowDropDownLine /></div></div>
         </div> 
@@ -45,7 +45,18 @@ function MainPage() {
                     </select>
             </div>
         </div>
-            
+        <ul className='MPList'>
+                <li className='MPItem'><a href=''><img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png" className='MPImage'/></a>
+                <div className='MPPokeNum'>#0001</div>
+                <div className='MPPokeName'> Balbasaur </div>
+                <div className='d-flex'>
+                    <div className='MPAbility'>Grass</div>
+                    <div className='MPAbility'>Poison</div>
+                </div></li>
+        </ul>  
+        <div className='MPLoadMore'>
+            Load more Pokémon
+        </div>   
     </div>
   )
 }
