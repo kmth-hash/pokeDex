@@ -2,8 +2,10 @@
 import React from 'react';
 import {GiHamburgerMenu} from "react-icons/gi";
 import {FaUserCircle,FaSearch} from "react-icons/fa";
-import './MainPage.css';
+// import './MainPage.css';
 import { RiArrowDropDownLine } from "react-icons/ri";
+import './stylesheets/Mainpage.css';
+
 
 function MainPage() {
   return (
