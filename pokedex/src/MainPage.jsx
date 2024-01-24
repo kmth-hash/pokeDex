@@ -3,10 +3,8 @@ import React from 'react';
 import {GiHamburgerMenu} from "react-icons/gi";
 import {FaUserCircle,FaSearch} from "react-icons/fa";
 import './MainPage.css';
-import { RiArrowDropDownLine } from "react-icons/ri";
-import { RiRefreshLine } from "react-icons/ri";
+import { RiArrowDropDownLine,RiArrowDropUpLine,RiRefreshLine } from "react-icons/ri";
 import { CgPokemon } from "react-icons/cg";
-import Select from "react-select";
 
 function MainPage() {
   return (
@@ -30,7 +28,39 @@ function MainPage() {
             <div className='MPFeature'>
                 <p>Search for a Pokémon by name or its National Pokédex number.</p>
             </div>
-            <div className='MPAdvanced'>Show Advanced Search<div className='MPExpand'><RiArrowDropDownLine /></div></div>
+            <div className='MPAdvanced'>
+                <div>Show Advanced Search<div className='MPExpand'><RiArrowDropDownLine /></div></div>
+                <div className='MPHide'>
+                    <div className='MPTypeWeak'>
+                        <p>Type & Weakness</p>
+                        <div className='btn btn-primary'>Bug</div>
+                        <div className='btn btn-primary'>Dark</div>
+                        <div className='btn btn-primary'>Dragon</div>
+                        <div className='btn btn-primary'>Electic</div>
+                        <div className='btn btn-primary'>Fairy</div>
+                        <div className='btn btn-primary'>Fighting</div>
+                        <div className='btn btn-primary'>Fire</div>
+                        <div className='btn btn-primary'>Flying</div>
+                        <div className='btn btn-primary'>Ghost</div>
+                        <div className='btn btn-primary'>Grass</div>
+                        <div className='btn btn-primary'>Ground</div>
+                        <div className='btn btn-primary'>Ice</div>
+                        <div className='btn btn-primary'>Normal</div>
+                        <div className='btn btn-primary'>Poison</div>
+                        <div className='btn btn-primary'>Psychic</div>
+                        <div className='btn btn-primary'>Rock</div>
+                        <div className='btn btn-primary'>Steel</div>
+                        <div className='btn btn-primary'>Water</div>
+                        <div className='MPSubmit btn btn-primary'><FaSearch/>  Apply</div>
+                    </div>
+                <div>
+                    <div className='MPExpand'><RiArrowDropUpLine /></div>Hide Advanced Search 
+                </div> 
+                </div>
+                
+            </div>
+                
+            
         </div> 
         <div className='MPFilter'>
             <div className='MPSurprise'><RiRefreshLine/> <b>Surprise Me!</b></div>

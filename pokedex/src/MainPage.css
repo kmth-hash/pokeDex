@@ -74,7 +74,7 @@
 .MPAdvanced{
     margin-top: 20px;
     text-align: center;
-    font-size: larger;
+    font-size: large;
     padding: 10px;
     background-color: rgb(96, 94, 94);
 }
@@ -155,4 +155,28 @@
     border-radius: 10px;
     font-size: 20px;
     margin:10px;
+}
+
+.MPHide{
+    padding: 10px;
+}
+
+.btn.btn-primary{
+    background-color: rgb(246, 153, 204);
+    border-color:  rgb(255, 255, 255);
+    height: 35px;
+    width: 100px;
+    margin: 5px;
+    color: black;
+}
+
+.MPSubmit.btn.btn-primary{
+    justify-content: center;
+    background-color: rgb(245, 73, 26);
+    color: aliceblue;
+    border-color: rgb(245, 73, 26);
+    height: 45px;
+    width: 130px;
+    font-weight: 500;
+    font-size: large;
 }
