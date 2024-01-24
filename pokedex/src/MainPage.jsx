@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {GiHamburgerMenu} from "react-icons/gi";
 import {FaUserCircle,FaSearch} from "react-icons/fa";
 import './MainPage.css';
@@ -7,6 +7,7 @@ import { RiArrowDropDownLine,RiArrowDropUpLine,RiRefreshLine } from "react-icons
 import { CgPokemon } from "react-icons/cg";
 
 function MainPage() {
+    const [search,setSearch] = useState(false);
   return (
     <div>
         <div className='MPContainer1 d-flex '>
@@ -29,7 +30,8 @@ function MainPage() {
                 <p>Search for a Pokémon by name or its National Pokédex number.</p>
             </div>
             <div className='MPAdvanced'>
-                <div>Show Advanced Search<div className='MPExpand'><RiArrowDropDownLine /></div></div>
+                {search == false ? <><div onClick={()=>{setSearch(!search)}}>Show Advanced Search<div className='MPExpand'><RiArrowDropDownLine /></div></div></>:
+                <>
                 <div className='MPHide'>
                     <div className='MPTypeWeak'>
                         <p>Type & Weakness</p>
@@ -50,13 +52,16 @@ function MainPage() {
                         <div className='btn btn-primary'>Psychic</div>
                         <div className='btn btn-primary'>Rock</div>
                         <div className='btn btn-primary'>Steel</div>
-                        <div className='btn btn-primary'>Water</div>
+                        <div className='btn btn-primary'>Water</div><br/>
                         <div className='MPSubmit btn btn-primary'><FaSearch/>  Apply</div>
                     </div>
-                <div>
-                    <div className='MPExpand'><RiArrowDropUpLine /></div>Hide Advanced Search 
+                <div onClick={()=>{setSearch(!search)}}>
+                    <div className='MPExpand pt-3'><RiArrowDropUpLine /></div>Hide Advanced Search 
                 </div> 
                 </div>
+                </>
+                }
+                
                 
             </div>
                 
