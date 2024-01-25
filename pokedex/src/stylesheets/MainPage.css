@@ -9,6 +9,11 @@
 
 }
 
+.MPAdvancedBar{
+    display: flex;
+    justify-content: space-around;
+}
+
 .MPMenuIcon{
     margin-top: 10px;
 }
@@ -73,9 +78,9 @@
 
 .MPAdvanced{
     margin-top: 20px;
+    margin-bottom: 20px;
     text-align: center;
     font-size: large;
-    padding: 10px;
     background-color: rgb(96, 94, 94);
 }
 
@@ -123,7 +128,7 @@
 }
 
 .MPItem{
-    margin: 10px;
+    margin: 30px 20px;
 }
 
 .MPImage{
@@ -131,11 +136,13 @@
 }
 
 .MPPokeNum{
+    text-align: center;
     font-size: medium;
     color: rgb(100, 99, 99);
 }
 
 .MPPokeName{
+    text-align: center;
     font-size: larger;
 }
 
