@@ -2,7 +2,7 @@
 import React from 'react';
 import {GiHamburgerMenu} from "react-icons/gi";
 import {FaUserCircle,FaSearch} from "react-icons/fa";
-import './MainPage.css';
+import './stylesheets/MainPage.css';
 import { RiArrowDropDownLine,RiArrowDropUpLine,RiRefreshLine } from "react-icons/ri";
 import { CgPokemon } from "react-icons/cg";
 
@@ -17,7 +17,7 @@ function MainPage() {
             <div className='MPLoginIcon'>
                 <FaUserCircle/>
             </div>
-        </div>
+        </div> 
         <div className='MPContainer2'>
             <div className='MPText1'>Name or Number</div>
             <div className='MPSearch d-flex'>
