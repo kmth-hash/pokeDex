@@ -1,14 +1,11 @@
 /* eslint-disable no-unused-vars */
+import {GiHamburgerMenu} from "react-icons/gi";
+import {FaUserCircle,FaSearch} from "react-icons/fa";
+import './stylesheets/MainPage.css';
+import { RiArrowDropDownLine,RiArrowDropUpLine,RiRefreshLine } from "react-icons/ri";
 import React, { useEffect, useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { FaUserCircle, FaSearch } from "react-icons/fa";
 import { BiSort } from "react-icons/bi";
 import "./stylesheets/MainPage.css";
-import {
-  RiArrowDropDownLine,
-  RiArrowDropUpLine,
-  RiRefreshLine,
-} from "react-icons/ri";
 import { CgPokemon } from "react-icons/cg";
 
 function MainPage() {

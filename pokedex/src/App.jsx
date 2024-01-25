@@ -1,15 +1,25 @@
 
 import './App.css'
 import MainPage from './MainPage';
-// import Pokelist from './Pokelist';
+import Pokelist from './Pokelist';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+const routes = [{
+  path : '/' , 
+  element : <MainPage />
+} , 
+{
+  path : '/pokemon/' , 
+  element : <Pokelist />
+}];
+
+const router = createBrowserRouter(routes);
 
 function App() {
 
   return (
     <div>
-      <MainPage></MainPage>
-      {/* <Pokelist /> */}
+      <RouterProvider router={router}></RouterProvider>
     </div>
   )
 }
