@@ -1,0 +1,80 @@
+.IPContainer1{
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 70px;
+    font-size: 25px;
+
+}
+
+.IPBackIcon{
+    margin-top: 10px;
+    width: 5%;
+    text-align: center;
+}
+
+.IPTitle{
+    margin-top: 20px;
+    width: 90%;
+    text-align: center;
+}
+
+.IPType{
+    width: 100px;
+    background-color: palevioletred;
+    color: aliceblue;
+    padding: 0px 0px 0px;
+    margin-right:10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.IPNavigate{
+    display: flex;
+    justify-content: space-between;
+}
+.IPPrevious{
+    background-color: rgb(5, 167, 40);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height:40px;
+    width: 90px;
+    padding-top: 5px;
+    color: aliceblue;
+    font-weight: 500;
+}
+
+.IPNext{
+    background-color: rgb(5, 167, 40);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height:40px;
+    width: 90px;
+    padding-top: 5px;
+    text-align: right;
+    color: aliceblue;
+    font-weight: 500;
+}
+
+.IPImage{
+    text-align: center;
+}
+
+.IPDataContainer{
+    padding-top: 30px;
+    padding-left: 10px;
+}
+
+.IPDataTitle1{
+    font-size: larger;
+    font-weight: 600;
+}
+
+.IPDataTitle1{
+    padding-top: 20px;
+}
+
+.IPPokeTable{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+

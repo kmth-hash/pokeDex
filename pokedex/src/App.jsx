@@ -1,5 +1,6 @@
 
 import './App.css'
+import IndPokemon from './IndPokemon';
 import MainPage from './MainPage';
 import Pokelist from './Pokelist';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,6 +12,10 @@ const routes = [{
 {
   path : '/pokemon/' , 
   element : <Pokelist />
+} , 
+{
+  path : '/Individual/' ,
+  element : <IndPokemon />
 }];
 
 const router = createBrowserRouter(routes);
