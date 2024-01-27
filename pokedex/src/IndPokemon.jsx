@@ -24,11 +24,12 @@ function IndPokemon() {
           Next <GrFormNext />
         </div>
       </div>
+      <div className='container'>
       <div className='IPDataContainer row'>
-        <div className='IPImage col-lg-2'>
+        <div className='IPImage col-lg-6 col-md-6 col-xs-3'>
           <img src="https://img.pokemondb.net/artwork/victini.jpg" width="322" height="400" alt="Victini artwork by Ken Sugimori" />
         </div>
-        <div className='IPPokeData col-lg-2'>
+        <div className='IPPokeData col-sm'>
           <div className='IPDataTitle1'>Pokédex data</div>
           <table className='IPPokeTable'>
             <tbody>
@@ -60,6 +61,7 @@ function IndPokemon() {
             </tbody>
           </table>
         </div>
+      </div>
       </div>
       
   </div>

@@ -6,7 +6,6 @@ import { RiArrowDropDownLine,RiArrowDropUpLine,RiRefreshLine } from "react-icons
 import React, { useEffect, useState } from "react";
 import { BiSort } from "react-icons/bi";
 import "./stylesheets/MainPage.css";
-import { CgPokemon } from "react-icons/cg";
 
 function MainPage() {
   const [search, setSearch] = useState(false);
@@ -42,21 +41,23 @@ function MainPage() {
           <p>Search for a Pokémon by name or its National Pokédex number.</p>
         </div>
         <div className="MPAdvanced">
-          <div className="MPAdvancedBar pt-2 pb-2 row">
-            <div className="col-3" onClick={() => {setSearch(!search);}}>
+          <div className="MPAdvancedBar pt-2 pb-2 d-flex">
+            <div onClick={() => {setSearch(!search);}}>
               Types <RiArrowDropDownLine />
             </div>
-            <div className="col-3">
+            <div>
               Surprise Me! <RiRefreshLine />
             </div>
-            <div className="col-3">
+            <div>
               Sort By <BiSort />
             </div>
-            {search == false ? (
+          </div>
+        </div>
+        {search == false ? (
               <></>
             ) : (
               <>
-                <div className="MPHide pt-4 pb-1">
+                <div className="MPHide">
                   <div className="MPTypeWeak">
                     <div className="MPTW btn">Bug</div>
                     <div className="MPTW btn">Dark</div>
@@ -90,34 +91,33 @@ function MainPage() {
                 </div>
               </>
             )}
-        </div>
-        </div>
-        
       </div>
-      <div className="d-flex justify-content-center">
+      <div className="MPContainer4">
+      <div className="container MPContainer3">
         <div className="MPList row">
-          {Array.from(Array(10).keys()).map((n) => {
+          {Array.from(Array(18).keys()).map((n) => {
             return (
               <div className="MPItem col-lg-2 col-md-3 col-xs-3" key={n}>
                 <a href="" className="d-flex justify-content-center">
                   <img
-                    src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png"
+                    src="https://img.pokemondb.net/sprites/black-white/normal/victini.png" alt="Victini"
                     className="MPImage"
                   />
                 </a>
-                <div className="MPPokeNum">#0001</div>
-                <div className="MPPokeName"> Balbasaur </div>
+                <div className="MPPokeNum">#000</div>
+                <div className="MPPokeName"> Victini </div>
                 <div className="d-flex justify-content-center">
-                  <div className="MPAbility">Grass</div>
-                  <div className="MPAbility">Poison</div>
+                  <div className="MPAbility">Psychic</div>
+                  <div className="MPAbility">Fire</div>
                 </div>
               </div>
             );
           })}
         </div>
+        <div className="d-flex  justify-content-center">
+        <div className="MPLoadMore">Load more Pokémon...</div>
       </div>
-      <div className="d-flex  justify-content-center">
-        <div className="MPLoadMore">Load more Pokémon</div>
+      </div>
       </div>
     </div>
   );
