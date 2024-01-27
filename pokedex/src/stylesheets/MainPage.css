@@ -190,3 +190,26 @@
     border-color: rgb(118, 120, 120) !important;
 }
 
+.MPScrollTop{
+    display: none; 
+  position: fixed; 
+  bottom: 20px; 
+  right: 10px;
+  z-index: 99;
+  border: none; 
+  outline: none; 
+  background-color: rgb(245, 73, 26);
+  cursor: pointer; 
+  padding: 15px;
+  border-radius: 40px; 
+  font-size: 18px;
+}
+
+.MPScrollTop:hover{
+    background-color: rgb(196, 45, 4);
+}
+
+.MPA{
+    color: white !important;
+}
+

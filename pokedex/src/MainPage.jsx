@@ -6,9 +6,20 @@ import { RiArrowDropDownLine,RiArrowDropUpLine,RiRefreshLine } from "react-icons
 import React, { useEffect, useState } from "react";
 import { BiSort } from "react-icons/bi";
 import "./stylesheets/MainPage.css";
+import { FaArrowUp } from "react-icons/fa";
 
 function MainPage() {
   const [search, setSearch] = useState(false);
+  let mybutton = document.getElementById("btnscrolltop");
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
   return (
     <div>
       <div className="MPContainer1 d-flex ">
@@ -119,6 +130,7 @@ function MainPage() {
       </div>
       </div>
       </div>
+      <div id="btnscrolltop" className="MPScrollTop"><a href="#top" className="MPA"><FaArrowUp/></a></div>
     </div>
   );
 }
