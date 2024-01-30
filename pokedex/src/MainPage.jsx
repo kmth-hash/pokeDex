@@ -7,12 +7,13 @@ import React, { useEffect, useState } from "react";
 import { BiSort } from "react-icons/bi";
 import "./stylesheets/MainPage.css";
 import { FaArrowUp } from "react-icons/fa";
+import data from "./pokeList.json";
 
 function MainPage() {
   const [search, setSearch] = useState(false);
   let mybutton = document.getElementById("btnscrolltop");
   window.onscroll = function() {scrollFunction()};
-  
+
   function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       mybutton.style.display = "block";
@@ -106,20 +107,25 @@ function MainPage() {
       <div className="MPContainer4">
       <div className="container MPContainer3">
         <div className="MPList row">
-          {Array.from(Array(18).keys()).map((n) => {
+          {Array.from(data.keys()).map((n) => {
+            // console.log("n>>>>",data[n]);
             return (
-              <div className="MPItem col-lg-2 col-md-3 col-xs-3" key={n}>
+              <div className="MPItem my-4 col-lg-2 col-md-3 col-xs-3" key={n}>
                 <a href="" className="d-flex justify-content-center">
                   <img
-                    src="https://img.pokemondb.net/sprites/black-white/normal/victini.png" alt="Victini"
+                    src={data[n].PokeImg} alt={data[n].Pokemon}
                     className="MPImage"
                   />
                 </a>
-                <div className="MPPokeNum">#000</div>
-                <div className="MPPokeName"> Victini </div>
+                <div className="MPPokeNum">{data[n].PID}</div>
+                <div className="MPPokeName"> {data[n].Pokemon} </div>
                 <div className="d-flex justify-content-center">
-                  <div className="MPAbility">Psychic</div>
-                  <div className="MPAbility">Fire</div>
+                  {Array.from(data[n].Poketype).map((i)=>{
+                    return(
+                      <div className="MPAbility" key={i}>{i}</div>
+                    )
+                  })
+                  }
                 </div>
               </div>
             );
