@@ -11,6 +11,7 @@ import data from "./pokeList.json";
 
 function MainPage() {
   const [search, setSearch] = useState(false);
+  const [sort,showSort] = useState(false);
   let mybutton = document.getElementById("btnscrolltop");
   window.onscroll = function() {scrollFunction()};
 
@@ -54,17 +55,31 @@ function MainPage() {
         </div>
         <div className="MPAdvanced">
           <div className="MPAdvancedBar pt-2 pb-2 d-flex">
-            <div onClick={() => {setSearch(!search);}}>
+            <div onClick={() => {setSearch(!search),showSort(false);}}>
               Types <RiArrowDropDownLine />
             </div>
-            <div>
+            <div onClick={() => {showSort(false),setSearch(false);}}>
               Surprise Me! <RiRefreshLine />
             </div>
-            <div>
+            <div  onClick={() => {showSort(!sort),setSearch(false);}}>
               Sort By <BiSort />
             </div>
           </div>
         </div>
+        {sort == false? (
+          <></>
+        ):(
+        <>
+        <div className="MPSort d-flex flex-row-reverse">
+        <select>
+            <option>Lowest number (first)</option>
+            <option>Highest number (first)</option>
+            <option>A-Z</option>
+            <option>Z-A</option>
+        </select>
+        </div>
+        
+        </>)}
         {search == false ? (
               <></>
             ) : (
