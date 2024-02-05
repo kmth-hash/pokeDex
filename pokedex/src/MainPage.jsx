@@ -8,6 +8,7 @@ import { BiSort } from "react-icons/bi";
 import "./stylesheets/MainPage.css";
 import { FaArrowUp } from "react-icons/fa";
 import data from "./pokeList.json";
+import { IoClose } from "react-icons/io5";
 
 function MainPage() {
   const [search, setSearch] = useState(false);
@@ -59,14 +60,14 @@ function MainPage() {
         </div>
         <div className="MPAdvanced">
           <div className="MPAdvancedBar pt-2 pb-2 d-flex">
-            <div className={MPTypeOnclick} onClick={() => {setSearch(!search),showSort(false),setSurp(false);}}>
-              Types <RiArrowDropDownLine />
+            <div  className={MPSortOnclick} onClick={() => {showSort(!sort),setSearch(false),setSurp(false);}}>
+              Sort By <BiSort />
             </div>
             <div className={MPSurOnclick} onClick={() => {setSurp(!surp),showSort(false),setSearch(false);}}>
               Surprise Me! <RiRefreshLine />
             </div>
-            <div  className={MPSortOnclick} onClick={() => {showSort(!sort),setSearch(false),setSurp(false);}}>
-              Sort By <BiSort />
+            <div className={MPTypeOnclick} onClick={() => {setSearch(!search),showSort(false),setSurp(false);}}>
+              Types <RiArrowDropDownLine />
             </div>
           </div>
         </div>
@@ -87,6 +88,7 @@ function MainPage() {
             ) : (
               <>
                 <div className="MPHide">
+                  <div className="MPCloseIcon" onClick={() => {setSearch(!search),showSort(false),setSurp(false);}}><IoClose /></div>
                   <div className="MPTypeWeak">
                     <div className="MPTW btn">Bug</div>
                     <div className="MPTW btn">Dark</div>
