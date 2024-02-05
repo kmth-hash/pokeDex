@@ -18,6 +18,16 @@ function MainPage() {
   const MPTypeOnclick = search ? "MPOnclick" : null;
   const MPSurOnclick = surp ? "MPOnclick" : null;
   let mybutton = document.getElementById("btnscrolltop");
+
+  const [inputText, setInputText] = useState("");
+  const [searchText, setSearchText] = useState("");
+  let inputHandler = (e) => {
+    //convert input text to lower case
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+    console.log("input>>>>>",inputText)
+  };
+
   window.onscroll = function() {scrollFunction()};
 
   function scrollFunction() {
@@ -88,7 +98,7 @@ function MainPage() {
             ) : (
               <>
                 <div className="MPHide">
-                  <div className="MPCloseIcon" onClick={() => {setSearch(!search),showSort(false),setSurp(false);}}><IoClose /></div>
+                  <div className="MPCloseIcon"><IoClose onClick={() => {setSearch(!search);}} /></div>
                   <div className="MPTypeWeak">
                     <div className="MPTW btn">Bug</div>
                     <div className="MPTW btn">Dark</div>
@@ -116,7 +126,7 @@ function MainPage() {
                       Reset
                     </div>
                   </div>
-                  <div className="pt-3" onClick={() => {setSearch(!search);}}>
+                  <div className="p-3" onClick={() => {setSearch(!search);}}>
                     Hide Types<RiArrowDropUpLine />
                   </div>
                 </div>
