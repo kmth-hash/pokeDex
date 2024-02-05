@@ -135,11 +135,22 @@
     margin:30px;
 }
 
+.MPSort{
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: large;
+    background-color: rgb(96, 94, 94); 
+}
+
 .MPHide{
     padding-top: 20px;
     text-align: center;
     font-size: large;
     background-color: rgb(96, 94, 94);
+}
+
+.MPOnclick{
+    color: rgb(105, 251, 82);
 }
 
 .MPTW{

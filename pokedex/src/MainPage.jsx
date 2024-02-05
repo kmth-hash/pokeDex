@@ -12,6 +12,10 @@ import data from "./pokeList.json";
 function MainPage() {
   const [search, setSearch] = useState(false);
   const [sort,showSort] = useState(false);
+  const [surp, setSurp] = useState (false) ;
+  const MPSortOnclick = sort ? "MPOnclick" : null;
+  const MPTypeOnclick = search ? "MPOnclick" : null;
+  const MPSurOnclick = surp ? "MPOnclick" : null;
   let mybutton = document.getElementById("btnscrolltop");
   window.onscroll = function() {scrollFunction()};
 
@@ -55,13 +59,13 @@ function MainPage() {
         </div>
         <div className="MPAdvanced">
           <div className="MPAdvancedBar pt-2 pb-2 d-flex">
-            <div onClick={() => {setSearch(!search),showSort(false);}}>
+            <div className={MPTypeOnclick} onClick={() => {setSearch(!search),showSort(false),setSurp(false);}}>
               Types <RiArrowDropDownLine />
             </div>
-            <div onClick={() => {showSort(false),setSearch(false);}}>
+            <div className={MPSurOnclick} onClick={() => {setSurp(!surp),showSort(false),setSearch(false);}}>
               Surprise Me! <RiRefreshLine />
             </div>
-            <div  onClick={() => {showSort(!sort),setSearch(false);}}>
+            <div  className={MPSortOnclick} onClick={() => {showSort(!sort),setSearch(false),setSurp(false);}}>
               Sort By <BiSort />
             </div>
           </div>
@@ -70,13 +74,11 @@ function MainPage() {
           <></>
         ):(
         <>
-        <div className="MPSort d-flex flex-row-reverse">
-        <select>
-            <option>Lowest number (first)</option>
-            <option>Highest number (first)</option>
-            <option>A-Z</option>
-            <option>Z-A</option>
-        </select>
+        <div className="MPSort">
+            <div>Lowest number (first)</div>
+            <div>Highest number (first)</div>
+            <div>A-Z</div>
+            <div>Z-A</div>
         </div>
         
         </>)}
