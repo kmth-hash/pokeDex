@@ -14,18 +14,21 @@ function MainPage() {
   const [search, setSearch] = useState(false);
   const [sort,showSort] = useState(false);
   const [surp, setSurp] = useState (false) ;
+  const [text,setText] = useState("");
+  const [searchtxt,setSearchtxt] = useState(text);
   const MPSortOnclick = sort ? "MPOnclick" : null;
   const MPTypeOnclick = search ? "MPOnclick" : null;
   const MPSurOnclick = surp ? "MPOnclick" : null;
   let mybutton = document.getElementById("btnscrolltop");
 
-  const [inputText, setInputText] = useState("");
-  const [searchText, setSearchText] = useState("");
-  let inputHandler = (e) => {
-    //convert input text to lower case
-    var lowerCase = e.target.value.toLowerCase();
-    setInputText(lowerCase);
-    console.log("input>>>>>",inputText)
+  const handleChange = (event) => {
+    setText(event.target.value);
+    // console.log("text>>>",text)
+  };
+
+  const handleClick = () => {
+    setSearchtxt(text.toLowerCase());
+    // console.log("searchtxt>>>>",searchtxt)
   };
 
   window.onscroll = function() {scrollFunction()};
@@ -54,10 +57,10 @@ function MainPage() {
         <div className="MPText1">Name or Number</div>
         <div className="MPSearch d-flex">
           <div>
-            <input type="text" className="MPSearchText"></input>
+            <input type="text" className="MPSearchText" id="txtPokemon" onChange={handleChange}></input>
           </div>
           <div>
-            <div className="MPSearchButton">
+            <div className="MPSearchButton" onClick={handleClick}>
               <FaSearch />
             </div>
           </div>
@@ -138,26 +141,53 @@ function MainPage() {
         <div className="MPList row">
           {Array.from(data.keys()).map((n) => {
             // console.log("n>>>>",data[n]);
-            return (
-              <div className="MPItem my-4 col-lg-2 col-md-3 col-xs-3" key={n}>
-                <a href="" className="d-flex justify-content-center">
-                  <img
-                    src={data[n].PokeImg} alt={data[n].Pokemon}
-                    className="MPImage"
-                  />
-                </a>
-                <div className="MPPokeNum">{data[n].PID}</div>
-                <div className="MPPokeName"> {data[n].Pokemon} </div>
-                <div className="d-flex justify-content-center">
-                  {Array.from(data[n].Poketype).map((i)=>{
-                    return(
-                      <div className="MPAbility" key={i}>{i}</div>
-                    )
-                  })
-                  }
+            if(searchtxt == ""){
+              return (
+                <div className="MPItem my-4 col-lg-2 col-md-3 col-xs-3" key={n}>
+                  <a href="" className="d-flex justify-content-center">
+                    <img
+                      src={data[n].PokeImg} alt={data[n].Pokemon}
+                      className="MPImage"
+                    />
+                  </a>
+                  <div className="MPPokeNum">{data[n].PID}</div>
+                  <div className="MPPokeName"> {data[n].Pokemon} </div>
+                  <div className="d-flex justify-content-center">
+                    {Array.from(data[n].Poketype).map((i)=>{
+                      return(
+                        <div className="MPAbility" key={i}>{i}</div>
+                      )
+                    })
+                    }
+                  </div>
                 </div>
-              </div>
-            );
+              );
+            }
+            else{
+                if (data[n].Pokemon.toLowerCase().startsWith(searchtxt) || data[n].PID.includes(searchtxt)) {
+                return (
+                  <div className="MPItem my-4 col-lg-2 col-md-3 col-xs-3" key={n}>
+                    <a href="" className="d-flex justify-content-center">
+                      <img
+                        src={data[n].PokeImg} alt={data[n].Pokemon}
+                        className="MPImage"
+                      />
+                    </a>
+                    <div className="MPPokeNum">{data[n].PID}</div>
+                    <div className="MPPokeName"> {data[n].Pokemon} </div>
+                    <div className="d-flex justify-content-center">
+                      {Array.from(data[n].Poketype).map((i)=>{
+                        return(
+                          <div className="MPAbility" key={i}>{i}</div>
+                        )
+                      })
+                      }
+                    </div>
+                  </div>
+                );
+              }
+            } 
+            
           })}
         </div>
         <div className="d-flex  justify-content-center">
