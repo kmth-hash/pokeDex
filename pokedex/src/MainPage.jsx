@@ -9,6 +9,7 @@ import "./stylesheets/MainPage.css";
 import { FaArrowUp } from "react-icons/fa";
 import data from "./pokeList.json";
 import { IoClose } from "react-icons/io5";
+import Pokecard from "./Pokecard";
 
 function MainPage() {
   const [search, setSearch] = useState(false);
@@ -143,47 +144,13 @@ function MainPage() {
             // console.log("n>>>>",data[n]);
             if(searchtxt == ""){
               return (
-                <div className="MPItem my-4 col-lg-2 col-md-3 col-xs-3" key={n}>
-                  <a href="" className="d-flex justify-content-center">
-                    <img
-                      src={data[n].PokeImg} alt={data[n].Pokemon}
-                      className="MPImage"
-                    />
-                  </a>
-                  <div className="MPPokeNum">{data[n].PID}</div>
-                  <div className="MPPokeName"> {data[n].Pokemon} </div>
-                  <div className="d-flex justify-content-center">
-                    {Array.from(data[n].Poketype).map((i)=>{
-                      return(
-                        <div className="MPAbility" key={i}>{i}</div>
-                      )
-                    })
-                    }
-                  </div>
-                </div>
+                <Pokecard key={n} InfoImg={data[n].PokeImg} InfoName={data[n].Pokemon} InfoPID={data[n].PID} InfoType={data[n].Poketype}></Pokecard>
               );
             }
             else{
                 if (data[n].Pokemon.toLowerCase().startsWith(searchtxt) || data[n].PID.includes(searchtxt)) {
                 return (
-                  <div className="MPItem my-4 col-lg-2 col-md-3 col-xs-3" key={n}>
-                    <a href="" className="d-flex justify-content-center">
-                      <img
-                        src={data[n].PokeImg} alt={data[n].Pokemon}
-                        className="MPImage"
-                      />
-                    </a>
-                    <div className="MPPokeNum">{data[n].PID}</div>
-                    <div className="MPPokeName"> {data[n].Pokemon} </div>
-                    <div className="d-flex justify-content-center">
-                      {Array.from(data[n].Poketype).map((i)=>{
-                        return(
-                          <div className="MPAbility" key={i}>{i}</div>
-                        )
-                      })
-                      }
-                    </div>
-                  </div>
+                  <Pokecard key={n} InfoImg={data[n].PokeImg} InfoName={data[n].Pokemon} InfoPID={data[n].PID} InfoType={data[n].Poketype}></Pokecard>
                 );
               }
             } 
