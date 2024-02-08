@@ -17,6 +17,7 @@ function MainPage() {
   const [surp, setSurp] = useState (false) ;
   const [text,setText] = useState("");
   const [searchtxt,setSearchtxt] = useState(text);
+  const [count,setCount]=useState(0);
   const MPSortOnclick = sort ? "MPOnclick" : null;
   const MPTypeOnclick = search ? "MPOnclick" : null;
   const MPSurOnclick = surp ? "MPOnclick" : null;
@@ -32,7 +33,18 @@ function MainPage() {
     // console.log("searchtxt>>>>",searchtxt)
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      // Get input value
+      setSearchtxt(text.toLowerCase());
+    }
+  };
+
   window.onscroll = function() {scrollFunction()};
+
+  function incCount() {
+    setCount(count+1);
+  }
 
   function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -58,7 +70,7 @@ function MainPage() {
         <div className="MPText1">Name or Number</div>
         <div className="MPSearch d-flex">
           <div>
-            <input type="text" className="MPSearchText" id="txtPokemon" onChange={handleChange}></input>
+            <input type="text" className="MPSearchText" id="txtPokemon" onChange={handleChange} onKeyDown={handleKeyDown}></input>
           </div>
           <div>
             <div className="MPSearchButton" onClick={handleClick}>
@@ -140,7 +152,8 @@ function MainPage() {
       <div className="MPContainer4">
       <div className="container MPContainer3">
         <div className="MPList row">
-          {Array.from(data.keys()).map((n) => {
+          {
+          Array.from(data.keys()).map((n) => {
             // console.log("n>>>>",data[n]);
             if(searchtxt == ""){
               return (
@@ -154,7 +167,6 @@ function MainPage() {
                 );
               }
             } 
-            
           })}
         </div>
         <div className="d-flex  justify-content-center">
