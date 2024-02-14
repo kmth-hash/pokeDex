@@ -10,6 +10,7 @@ import { FaArrowUp } from "react-icons/fa";
 import data from "./pokeList.json";
 import { IoClose } from "react-icons/io5";
 import Pokecard from "./Pokecard";
+import {surpriseMe} from './helpers/functions.jsx';
 
 function MainPage() {
   const [search, setSearch] = useState(false);
@@ -53,6 +54,9 @@ function MainPage() {
       mybutton.style.display = "none";
     }
   }
+  // useEffect(()=>{
+  //   surpriseMe(data , [] , 1);
+  // }, []);
   return (
     <div>
       <div className="MPContainer1 d-flex ">
