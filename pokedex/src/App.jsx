@@ -10,7 +10,7 @@ const routes = [{
   element : <MainPage />
 } , 
 {
-  path : '/pokemon/' , 
+  path : '/pokemon/:pokemon' , 
   element : <Pokelist />
 } , 
 {
