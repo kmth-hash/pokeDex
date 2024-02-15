@@ -16,14 +16,22 @@ function MainPage() {
   const [search, setSearch] = useState(false);
   const [sort,showSort] = useState(false);
   const [surp, setSurp] = useState (false) ;
+  const [lowfirst,setLowfirst]=useState(false);
+  const [highfirst,setHighfirst] = useState(false);
+  const [atoz,setAtoz] = useState(false);
+  const [ztoa,setZtoa] = useState(false);
   const [text,setText] = useState("");
   const [searchtxt,setSearchtxt] = useState(text);
-  const [count,setCount]=useState("false");
+  const [count,setCount]=useState(false);
   const MPSortOnclick = sort ? "MPOnclick" : null;
   const MPTypeOnclick = search ? "MPOnclick" : null;
   const MPSurOnclick = surp ? "MPOnclick" : null;
+  const MPLowOnclick = lowfirst ? "MPOnclick" : null;
+  const MPHighOnclick = highfirst ? "MPOnclick" : null;
+  const MPAtozOnclick = atoz ? "MPOnclick" : null;
+  const MPZtoaOnclick = ztoa ? "MPOnclick" : null;
   let mybutton = document.getElementById("btnscrolltop");
-
+console.log("data:",typeof(data));
   const handleChange = (event) => {
     setText(event.target.value);
     // console.log("text>>>",text)
@@ -36,7 +44,6 @@ function MainPage() {
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      // Get input value
       setSearchtxt(text.toLowerCase());
     }
   };
@@ -53,6 +60,35 @@ function MainPage() {
     } else {
       mybutton.style.display = "none";
     }
+  }
+
+  function compareByName(a,b){
+    return a.Pokemon.localeCompare(b.Pokemon);
+  }
+
+  function compareByNameDesc(a,b){
+    return b.Pokemon.localeCompare(a.Pokemon);
+  }
+
+  function compareByNum(a,b){
+    return a.PID.localeCompare(b.PID);
+  }
+
+  function compareByNumDesc(a,b){
+    return b.PID.localeCompare(a.PID);
+  }
+
+
+  if (lowfirst){
+    data.sort(compareByNum);
+  }else if (highfirst){
+    data.sort(compareByNumDesc);
+  }else if (atoz){
+    data.sort(compareByName);
+  }else if (ztoa){
+    data.sort(compareByNameDesc);
+  }else{
+    data.sort(compareByNum);
   }
   // useEffect(()=>{
   //   surpriseMe(data , [] , 1);
@@ -106,10 +142,10 @@ function MainPage() {
         ):(
         <>
         <div className="MPSort">
-            <div>Lowest number (first)</div>
-            <div>Highest number (first)</div>
-            <div>A-Z</div>
-            <div>Z-A</div>
+            <div className={MPLowOnclick} onClick={()=>{setLowfirst(!lowfirst),setHighfirst(false),setAtoz(false),setZtoa(false);}}>Lowest number (first)</div>
+            <div className={MPHighOnclick} onClick={()=>{setHighfirst(!highfirst),setLowfirst(false),setAtoz(false),setZtoa(false);}}>Highest number (first)</div>
+            <div className={MPAtozOnclick} onClick={()=>{setAtoz(!atoz),setLowfirst(false),setHighfirst(false),setZtoa(false);}}>A-Z</div>
+            <div className={MPZtoaOnclick} onClick={()=>{setZtoa(!ztoa),setLowfirst(false),setHighfirst(false),setAtoz(false);}}>Z-A</div>
         </div>
         
         </>)}
@@ -158,7 +194,6 @@ function MainPage() {
         <div className="MPList row">
           {
           Array.from(data.keys()).map((n) => {
-            // console.log("n>>>>",data[n]);
             if(searchtxt == ""){
               return (
                 <Pokecard key={n} InfoImg={data[n].PokeImg} InfoName={data[n].Pokemon} InfoPID={data[n].PID} InfoType={data[n].Poketype}></Pokecard>
