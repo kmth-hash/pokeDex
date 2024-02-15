@@ -21,8 +21,8 @@ function MainPage() {
   const [atoz,setAtoz] = useState(false);
   const [ztoa,setZtoa] = useState(false);
   const [text,setText] = useState("");
+  const [typepoke,setPoketype] = useState([]);
   const [searchtxt,setSearchtxt] = useState(text);
-  const [count,setCount]=useState(false);
   const MPSortOnclick = sort ? "MPOnclick" : null;
   const MPTypeOnclick = search ? "MPOnclick" : null;
   const MPSurOnclick = surp ? "MPOnclick" : null;
@@ -31,7 +31,8 @@ function MainPage() {
   const MPAtozOnclick = atoz ? "MPOnclick" : null;
   const MPZtoaOnclick = ztoa ? "MPOnclick" : null;
   let mybutton = document.getElementById("btnscrolltop");
-console.log("data:",typeof(data));
+
+  const TypeList = ["Bug","Dark","Dragon","Electric","Fairy","Fighting","Fire","Flying","Ghost","Grass","Ground","Ice","Normal","Poison","Psychic","Rock","Steel","Water"];
   const handleChange = (event) => {
     setText(event.target.value);
     // console.log("text>>>",text)
@@ -48,11 +49,13 @@ console.log("data:",typeof(data));
     }
   };
 
-  window.onscroll = function() {scrollFunction()};
-
-  function incCount() {
-    setCount(count+1);
+  const filterList = (event) => {
+    console.log("Type clicked:",typepoke);
   }
+
+  window.onscroll = function() {
+    scrollFunction()
+  };
 
   function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -156,24 +159,11 @@ console.log("data:",typeof(data));
                 <div className="MPHide">
                   <div className="MPCloseIcon"><IoClose onClick={() => {setSearch(!search);}} /></div>
                   <div className="MPTypeWeak">
-                    <div className="MPTW btn">Bug</div>
-                    <div className="MPTW btn">Dark</div>
-                    <div className="MPTW btn">Dragon</div>
-                    <div className="MPTW btn">Electic</div>
-                    <div className="MPTW btn">Fairy</div>
-                    <div className="MPTW btn">Fighting</div>
-                    <div className="MPTW btn">Fire</div>
-                    <div className="MPTW btn">Flying</div>
-                    <div className="MPTW btn">Ghost</div>
-                    <div className="MPTW btn">Grass</div>
-                    <div className="MPTW btn">Ground</div>
-                    <div className="MPTW btn">Ice</div>
-                    <div className="MPTW btn">Normal</div>
-                    <div className="MPTW btn">Poison</div>
-                    <div className="MPTW btn">Psychic</div>
-                    <div className="MPTW btn">Rock</div>
-                    <div className="MPTW btn">Steel</div>
-                    <div className="MPTW btn">Water</div>
+                    {
+                      Array.from(TypeList.keys()).map((n) => {
+                        return(<div key={n} className="MPTW btn" id={TypeList[n]} onClick={filterList}>{TypeList[n]}</div>);
+                      })
+                    }
                     <br />
                     <div className="MPSubmit btn">
                       <FaSearch /> Apply

@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Pokecard({InfoImg, InfoName, InfoPID, InfoType}) {
-    const redirectURL = '/pokemon/'+InfoName;
+    const redirectURL = '/Individual/'+InfoName;
   return (
     <div className="MPItem my-4 col-lg-2 col-md-3 col-xs-3" >
         <a href={redirectURL} className="d-flex justify-content-center">

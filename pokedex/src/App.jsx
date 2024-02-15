@@ -14,7 +14,7 @@ const routes = [{
   element : <Pokelist />
 } , 
 {
-  path : '/Individual/' ,
+  path : '/Individual/:Individual' ,
   element : <IndPokemon />
 }];
 
