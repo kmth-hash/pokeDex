@@ -17,7 +17,7 @@ function MainPage() {
   const [surp, setSurp] = useState (false) ;
   const [text,setText] = useState("");
   const [searchtxt,setSearchtxt] = useState(text);
-  const [count,setCount]=useState(0);
+  const [count,setCount]=useState("false");
   const MPSortOnclick = sort ? "MPOnclick" : null;
   const MPTypeOnclick = search ? "MPOnclick" : null;
   const MPSurOnclick = surp ? "MPOnclick" : null;
