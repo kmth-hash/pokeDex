@@ -1,6 +1,6 @@
 const surpriseMe = (mainData , resData , n) =>{
 
-    console.log('Surprise me function call : ');
+    // console.log('Surprise me function call : ');
     // console.log(mainData )
     // console.log(resData)
     // console.log(n);
@@ -13,12 +13,12 @@ const surpriseMe = (mainData , resData , n) =>{
     {
         let x = Math.ceil((Math.random()*1000)%mainData.length);
         let randomPokemonPicked = mainData[x];
-        console.log(resData);
+        // console.log(resData);
         if(resData.includes(randomPokemonPicked))
         {
             //if pokemon already in result list
             //skip the iteration and find a new unique random
-            console.log('found : ', randomPokemonPicked)
+            // console.log('found : ', randomPokemonPicked)
         }
         else{
             resData.push(randomPokemonPicked);

@@ -22,6 +22,8 @@ function MainPage() {
   const [ztoa,setZtoa] = useState(false);
   const [text,setText] = useState("");
   const [typepoke,setPoketype] = useState([]);
+  const [loadnumber,setLoadnumber ] = useState(0);
+  const [surplist,setSurplist] = useState(surpriseMe(data,[],loadnumber));
   const [searchtxt,setSearchtxt] = useState(text);
   const MPSortOnclick = sort ? "MPOnclick" : null;
   const MPTypeOnclick = search ? "MPOnclick" : null;
@@ -93,9 +95,20 @@ function MainPage() {
   }else{
     data.sort(compareByNum);
   }
+
+  // const surpList= surpriseMe(data,[],0);
+
+  function loadMorePoke(){
+    setSurplist(surpriseMe(data,surplist,loadnumber));
+    console.log("loadnumber:",loadnumber);
+    // console.log("Load list:",surplist);
+  }
+  
+  
   // useEffect(()=>{
   //   surpriseMe(data , [] , 1);
   // }, []);
+
   return (
     <div>
       <div className="MPContainer1 d-flex ">
@@ -132,7 +145,7 @@ function MainPage() {
             <div  className={MPSortOnclick} onClick={() => {showSort(!sort),setSearch(false),setSurp(false);}}>
               Sort By <BiSort />
             </div>
-            <div className={MPSurOnclick} onClick={() => {setSurp(!surp),showSort(false),setSearch(false);}}>
+            <div className={MPSurOnclick} onClick={() => {setSurp(!surp),setSurplist(surpriseMe(data,[],loadnumber)),setLoadnumber(0),showSort(false),setSearch(false);}}>
               Surprise Me! <RiRefreshLine />
             </div>
             <div className={MPTypeOnclick} onClick={() => {setSearch(!search),showSort(false),setSurp(false);}}>
@@ -183,27 +196,35 @@ function MainPage() {
       <div className="container MPContainer3">
         <div className="MPList row">
           {
-          Array.from(data.keys()).map((n) => {
-            if(searchtxt == ""){
-              return (
-                <Pokecard key={n} InfoImg={data[n].PokeImg} InfoName={data[n].Pokemon} InfoPID={data[n].PID} InfoType={data[n].Poketype}></Pokecard>
-              );
-            }
-            else{
-                if (data[n].Pokemon.toLowerCase().startsWith(searchtxt) || data[n].PID.includes(searchtxt)) {
+            surp == false ? 
+            <>{Array.from(data.keys()).map((n) => {
+              if(searchtxt == ""){
                 return (
                   <Pokecard key={n} InfoImg={data[n].PokeImg} InfoName={data[n].Pokemon} InfoPID={data[n].PID} InfoType={data[n].Poketype}></Pokecard>
                 );
               }
-            } 
-          })}
+              else{
+                  if (data[n].Pokemon.toLowerCase().startsWith(searchtxt) || data[n].PID.includes(searchtxt)) {
+                  return (
+                    <Pokecard key={n} InfoImg={data[n].PokeImg} InfoName={data[n].Pokemon} InfoPID={data[n].PID} InfoType={data[n].Poketype}></Pokecard>
+                  );
+                }
+              } 
+            })}</>:
+            <>
+              {  Array.from(surplist.keys()).map((n) => {
+                return(<Pokecard key={n} InfoImg={surplist[n].PokeImg} InfoName={surplist[n].Pokemon} InfoPID={surplist[n].PID} InfoType={surplist[n].Poketype}></Pokecard>)
+              })
+              
+              }
+              <div className="d-flex  justify-content-center">
+                <div className="MPLoadMore" onClick={()=>{setLoadnumber(loadnumber+1),loadMorePoke(loadnumber)}}>Load more Pokémon...</div>
+              </div></>
+          }
         </div>
-        <div className="d-flex  justify-content-center">
-        <div className="MPLoadMore">Load more Pokémon...</div>
       </div>
       </div>
-      </div>
-      <div id="btnscrolltop" className="MPScrollTop"><a href="#top" className="MPA"><FaArrowUp/></a></div>
+      <div id="btnscrolltop" className="MPScrollTop" ><a href="#top" className="MPA"><FaArrowUp/></a></div>
     </div>
   );
 }
