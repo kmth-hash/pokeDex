@@ -88,6 +88,9 @@ function MainPage() {
     } 
   }
 
+  console.log("Type list:",typepoke);
+  console.log("Search text:",searchtxt);
+
   window.onscroll = function () {
     scrollFunction();
   };
@@ -324,24 +327,9 @@ function MainPage() {
             {surp == false ? (
               <>
                 {Array.from(data.keys()).map((n) => {
-                  
-                  if (searchtxt == "") {
-                    
-                    return (
-                      <Pokecard
-                        key={n}
-                        InfoImg={data[n].PokeImg}
-                        InfoName={data[n].Pokemon}
-                        InfoPID={data[n].PID}
-                        InfoType={data[n].Poketype}
-                      ></Pokecard>
-                    );
-                  } else {
-                    if (
-                      data[n].Pokemon.toLowerCase().startsWith(searchtxt) ||
-                      data[n].PID.includes(searchtxt)
-                    ) {
-                      
+                  if (searchtxt == ""){
+                    if (typepoke.length == 0){
+                      console.log("No search No type");
                       return (
                         <Pokecard
                           key={n}
@@ -351,6 +339,54 @@ function MainPage() {
                           InfoType={data[n].Poketype}
                         ></Pokecard>
                       );
+                    }else{
+                      console.log("No search Has type");
+                      if (typepoke.some((ele)=>{ return data[n].Poketype.includes(ele)})){
+                        return (
+                          <Pokecard
+                            key={n}
+                            InfoImg={data[n].PokeImg}
+                            InfoName={data[n].Pokemon}
+                            InfoPID={data[n].PID}
+                            InfoType={data[n].Poketype}
+                          ></Pokecard>
+                        );
+                      }
+                    }
+                  }else{
+                    if (typepoke.length == 0){
+                      console.log("Has search No type");
+                      if (
+                        data[n].Pokemon.toLowerCase().startsWith(searchtxt) ||
+                        data[n].PID.includes(searchtxt)
+                        ) {
+                        return (
+                          <Pokecard
+                            key={n}
+                            InfoImg={data[n].PokeImg}
+                            InfoName={data[n].Pokemon}
+                            InfoPID={data[n].PID}
+                            InfoType={data[n].Poketype}
+                          ></Pokecard>
+                        );
+                      }
+                    }else{
+                      console.log("Has search Has type");
+                      if (
+                      (data[n].Pokemon.toLowerCase().startsWith(searchtxt) ||
+                      data[n].PID.includes(searchtxt)) && 
+                      typepoke.some((ele)=>{ return data[n].Poketype.includes(ele)})
+                      ){
+                      return (
+                        <Pokecard
+                          key={n}
+                          InfoImg={data[n].PokeImg}
+                          InfoName={data[n].Pokemon}
+                          InfoPID={data[n].PID}
+                          InfoType={data[n].Poketype}
+                        ></Pokecard>
+                      );
+                    }
                     }
                   }
                   
