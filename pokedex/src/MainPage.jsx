@@ -42,18 +42,25 @@ function MainPage() {
 
   const handleClick = () => {
     setSearchtxt(text.toLowerCase());
+    setSurp(false);
     // console.log("searchtxt>>>>",searchtxt)
   };
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
+      setSurp(false);
       setSearchtxt(text.toLowerCase());
     }
   };
 
   const filterList = (event) => {
-    console.log("Type clicked:",typepoke);
+    if (typepoke.includes(event.target.id) ){
+      setPoketype(current => current.filter(id => id !== event.target.id));
+    }else{
+      setPoketype(current => [...current,(event.target.id)]);
+    } 
   }
+  console.log("Type list:",typepoke)
 
   window.onscroll = function() {
     scrollFunction()
@@ -96,18 +103,10 @@ function MainPage() {
     data.sort(compareByNum);
   }
 
-  // const surpList= surpriseMe(data,[],0);
-
   function loadMorePoke(){
     setSurplist(surpriseMe(data,surplist,loadnumber));
     console.log("loadnumber:",loadnumber);
-    // console.log("Load list:",surplist);
   }
-  
-  
-  // useEffect(()=>{
-  //   surpriseMe(data , [] , 1);
-  // }, []);
 
   return (
     <div>
