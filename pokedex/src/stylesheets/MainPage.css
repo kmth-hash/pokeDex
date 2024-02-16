@@ -175,6 +175,16 @@
     
 }
 
+.MPTW1{
+    background-color: aliceblue !important;
+    border-color:  rgb(255, 255, 255)!important;
+    height: 35px!important;
+    width: 100px!important;
+    margin: 5px!important;
+    color: black!important;
+    
+}
+
 .MPTW:hover{
     background-color: aliceblue !important;
     border-color: aliceblue !important;

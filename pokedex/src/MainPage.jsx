@@ -24,6 +24,8 @@ function MainPage() {
   const [highfirst, setHighfirst] = useState(false);
   const [atoz, setAtoz] = useState(false);
   const [ztoa, setZtoa] = useState(false);
+  const [apply,setApply] = useState(false);
+  const [applylist,setApplylist] = useState([]);
   const [text, setText] = useState("");
   const [nullMsg , setNullMsgBox] = useState(0);
   const [typepoke, setPoketype] = useState([]);
@@ -90,6 +92,7 @@ function MainPage() {
 
   console.log("Type list:",typepoke);
   console.log("Search text:",searchtxt);
+  console.log("applied list:",applylist);
 
   window.onscroll = function () {
     scrollFunction();
@@ -149,12 +152,12 @@ function MainPage() {
       if(n.Pokemon.toLowerCase().startsWith(searchtxt))
       {
         // console.log('found' , n)
-        console.log('1');
+        // console.log('1');
         c += 1;
         // return
       }
     })
-    console.log('c : ',c);
+    // console.log('c : ',c);
     setNullMsgBox(c);
   } , [searchtxt]);
 
@@ -237,6 +240,7 @@ function MainPage() {
                     setHighfirst(false),
                     setAtoz(false),
                     setZtoa(false);
+                    showSort(!sort);
                 }}
               >
                 Lowest number (first)
@@ -248,6 +252,7 @@ function MainPage() {
                     setLowfirst(false),
                     setAtoz(false),
                     setZtoa(false);
+                    showSort(!sort);
                 }}
               >
                 Highest number (first)
@@ -259,6 +264,7 @@ function MainPage() {
                     setLowfirst(false),
                     setHighfirst(false),
                     setZtoa(false);
+                    showSort(!sort);
                 }}
               >
                 A-Z
@@ -270,6 +276,7 @@ function MainPage() {
                     setLowfirst(false),
                     setHighfirst(false),
                     setAtoz(false);
+                    showSort(!sort);
                 }}
               >
                 Z-A
@@ -294,7 +301,7 @@ function MainPage() {
                   return (
                     <div
                       key={n}
-                      className="MPTW btn"
+                      className={typepoke.includes(TypeList[n])?"MPTW1 btn":"MPTW btn"}
                       id={TypeList[n]}
                       onClick={filterList}
                     >
@@ -303,10 +310,10 @@ function MainPage() {
                   );
                 })}
                 <br />
-                <div className="MPSubmit btn">
+                <div className="MPSubmit btn" onClick={()=>{setApplylist(typepoke)}}>
                   <FaSearch /> Apply
                 </div>
-                <div className="MPReset btn">Reset</div>
+                <div className="MPReset btn" onClick={()=>{setApplylist([]),setPoketype([])}}>Reset</div>
               </div>
               <div
                 className="p-3"
@@ -328,7 +335,7 @@ function MainPage() {
               <>
                 {Array.from(data.keys()).map((n) => {
                   if (searchtxt == ""){
-                    if (typepoke.length == 0){
+                    if (applylist.length == 0){
                       console.log("No search No type");
                       return (
                         <Pokecard
@@ -341,7 +348,7 @@ function MainPage() {
                       );
                     }else{
                       console.log("No search Has type");
-                      if (typepoke.some((ele)=>{ return data[n].Poketype.includes(ele)})){
+                      if (applylist.some((ele)=>{ return data[n].Poketype.includes(ele)})){
                         return (
                           <Pokecard
                             key={n}
@@ -354,7 +361,7 @@ function MainPage() {
                       }
                     }
                   }else{
-                    if (typepoke.length == 0){
+                    if (applylist.length == 0){
                       console.log("Has search No type");
                       if (
                         data[n].Pokemon.toLowerCase().startsWith(searchtxt) ||
@@ -375,7 +382,7 @@ function MainPage() {
                       if (
                       (data[n].Pokemon.toLowerCase().startsWith(searchtxt) ||
                       data[n].PID.includes(searchtxt)) && 
-                      typepoke.some((ele)=>{ return data[n].Poketype.includes(ele)})
+                      applylist.some((ele)=>{ return data[n].Poketype.includes(ele)})
                       ){
                       return (
                         <Pokecard
