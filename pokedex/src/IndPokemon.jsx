@@ -5,14 +5,14 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import "./stylesheets/IndPokemon.css";
 import { GrFormPrevious, GrFormNext} from "react-icons/gr";
 import infoData from "./pokeInfo.json";
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function IndPokemon() {
-  const pokemon = useLocation().pathname.split("/").pop().toLowerCase();
-  console.log("pokemon",pokemon);
-
+  // const pokemon = useLocation().pathname.split("/").pop().toLowerCase();
+  // console.log("pokemon",pokemon);
+  const {Individual} = useParams();
   const found = infoData.find(ele=>{
-    return ele.pokemon === pokemon;
+    return ele.pokemon === Individual.toLowerCase();
   })
 
   console.log("pokemon data:",found);
