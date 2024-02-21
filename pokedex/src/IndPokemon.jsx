@@ -16,8 +16,12 @@ function IndPokemon() {
     return ele.pokemon === Individual.toLowerCase();
   })
 
-  const prevpoke = '0'+(parseInt(found.NationalID)-1).toString();
-  const nextpoke = '0'+(parseInt(found.NationalID)+1).toString();
+  let prevpoke = '';
+  let nextpoke = '';
+  {found.NationalID != '0494' ? prevpoke='0'+(parseInt(found.NationalID)-1).toString() : prevpoke = '0649';}
+  {found.NationalID != '0649' ? nextpoke='0'+(parseInt(found.NationalID)+1).toString() : nextpoke = '0494';}
+  // const prevpoke = '0'+(parseInt(found.NationalID)-1).toString();
+  // const nextpoke = '0'+(parseInt(found.NationalID)+1).toString();
 
   const foundprev = infoData.find(ele => {
     return ele.NationalID === prevpoke;
@@ -29,6 +33,10 @@ function IndPokemon() {
 
   const redirectprev = '/Individual/'+foundprev.pokemon;
   const redirectnext = '/Individual/'+foundnext.pokemon;
+
+  function Capitalize(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
   // console.log("prevpoke:",prevpoke);
   // console.log("foundprev:",foundprev);
   // console.log("nextpoke:",nextpoke);
@@ -41,17 +49,21 @@ function IndPokemon() {
           <IoMdArrowRoundBack />  
         </div></a>
         <div className="IPTitle">
-          <h3>{found.pokemon}</h3>
+          {Capitalize(found.pokemon)}
         </div>
       </div>
       <div className='IPNavigate'>
-      <a href = {redirectprev}><div className='IPPrevious'>
-          <GrFormPrevious /> {prevpoke}
-        </div></a>
+        <a href = {redirectprev}>
+          <div className='IPPrevious'>
+            <GrFormPrevious /> #{prevpoke} {Capitalize(foundprev.pokemon)}
+          </div>
+        </a>
         <div className='IPEmpty'></div>
-        <a href = {redirectnext}><div className='IPNext'>
-          {nextpoke} <GrFormNext />
-        </div></a>
+        <a href = {redirectnext}>
+          <div className='IPNext'>
+            {Capitalize(foundnext.pokemon)} #{nextpoke} <GrFormNext />
+          </div>
+        </a>
       </div>
       <div className='container'>
       <div className='IPDataContainer row'>

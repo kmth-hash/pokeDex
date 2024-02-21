@@ -1,22 +1,24 @@
 .IPContainer1{
-    margin-left: 20px;
-    margin-right: 20px;
     height: 70px;
     font-size: 25px;
-
+    border-bottom-style:groove;
+    border-color: rgb(4, 248, 57);
 }
 
 .IPBackIcon{
-    margin-top: 10px;
+    margin: 10px;
     width: 5%;
     text-align: center;
     color: black !important;
 }
 
 .IPTitle{
-    margin-top: 20px;
+    margin-top: 10px;
+    padding-right: 35px;
     width: 90%;
     text-align: center;
+    font-size:xx-large;
+    font-weight: 700;
 }
 
 .IPType{
@@ -34,23 +36,28 @@
     justify-content: space-between;
 }
 .IPPrevious{
+    display: flex;
+    justify-content: center;
     background-color: rgb(5, 167, 40);
-    border-top-right-radius: 10px;
+    /* border-top-right-radius: 10px; */
     border-bottom-right-radius: 10px;
-    height:40px;
-    width: 90px;
-    padding-top: 5px;
+    height:60px;
+    width: auto;
+    padding: 15px;
     color: aliceblue;
     font-weight: 500;
 }
 
+
 .IPNext{
+    display: flex;
+    justify-content: center;
     background-color: rgb(5, 167, 40);
-    border-top-left-radius: 10px;
+    /* border-top-left-radius: 10px; */
     border-bottom-left-radius: 10px;
-    height:40px;
-    width: 90px;
-    padding-top: 5px;
+    height:60px;
+    width: auto;
+    padding: 15px;
     text-align: right;
     color: aliceblue;
     font-weight: 500;
