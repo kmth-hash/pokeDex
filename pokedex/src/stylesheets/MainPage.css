@@ -246,6 +246,15 @@
     color: white !important;
 }
 
+.MPNullMsg{
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    font-size: large;
+    font-weight: 500;
+    color: rgb(196, 45, 4);
+}
+
 
 
 

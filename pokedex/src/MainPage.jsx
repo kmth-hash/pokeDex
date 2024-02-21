@@ -399,8 +399,8 @@ function MainPage() {
                   
                 })}
                 {
-                  nullMsg>0 ? <></> : <div className="container bg-white rounded-1 border border-3 border-dark-subtle p-3 my-5">
-                  No Pokemons Found
+                  nullMsg>0 ? <></> : <div className="MPNullMsg container">
+                  No Pokémon Found!
                 </div>
                 }
               </>
