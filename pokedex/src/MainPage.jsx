@@ -20,7 +20,7 @@ function MainPage() {
   const [search, setSearch] = useState(false);
   const [sort, showSort] = useState(false);
   const [surp, setSurp] = useState(false);
-  const [lowfirst, setLowfirst] = useState(false);
+  const [lowfirst, setLowfirst] = useState(true);
   const [highfirst, setHighfirst] = useState(false);
   const [atoz, setAtoz] = useState(false);
   const [ztoa, setZtoa] = useState(false);
@@ -90,9 +90,9 @@ function MainPage() {
     } 
   }
 
-  console.log("Type list:",typepoke);
-  console.log("Search text:",searchtxt);
-  console.log("applied list:",applylist);
+  // console.log("Type list:",typepoke);
+  // console.log("Search text:",searchtxt);
+  // console.log("applied list:",applylist);
 
   window.onscroll = function () {
     scrollFunction();
@@ -143,21 +143,21 @@ function MainPage() {
   }
 
   useEffect(()=>{
-    if(searchtxt=='')
-    {setNullMsgBox(0);
-    return}
+    // if(searchtxt=='')
+    // {setNullMsgBox(0);
+    // return}
     let c = 0;
-    console.log('else')
+    // console.log('else')
     data.forEach(n=>{
       if(n.Pokemon.toLowerCase().startsWith(searchtxt))
       {
-        // console.log('found' , n)
-        // console.log('1');
+        console.log('found' , n)
+        console.log('1');
         c += 1;
-        // return
+        return
       }
     })
-    // console.log('c : ',c);
+    console.log('c : ',c);
     setNullMsgBox(c);
   } , [searchtxt]);
 
@@ -336,7 +336,7 @@ function MainPage() {
                 {Array.from(data.keys()).map((n) => {
                   if (searchtxt == ""){
                     if (applylist.length == 0){
-                      console.log("No search No type");
+                      // console.log("No search No type");
                       return (
                         <Pokecard
                           key={n}
@@ -347,7 +347,7 @@ function MainPage() {
                         ></Pokecard>
                       );
                     }else{
-                      console.log("No search Has type");
+                      // console.log("No search Has type");
                       if (applylist.some((ele)=>{ return data[n].Poketype.includes(ele)})){
                         return (
                           <Pokecard
@@ -362,7 +362,7 @@ function MainPage() {
                     }
                   }else{
                     if (applylist.length == 0){
-                      console.log("Has search No type");
+                      // console.log("Has search No type");
                       if (
                         data[n].Pokemon.toLowerCase().startsWith(searchtxt) ||
                         data[n].PID.includes(searchtxt)
@@ -378,7 +378,7 @@ function MainPage() {
                         );
                       }
                     }else{
-                      console.log("Has search Has type");
+                      // console.log("Has search Has type");
                       if (
                       (data[n].Pokemon.toLowerCase().startsWith(searchtxt) ||
                       data[n].PID.includes(searchtxt)) && 

@@ -11,34 +11,52 @@ function IndPokemon() {
   // const pokemon = useLocation().pathname.split("/").pop().toLowerCase();
   // console.log("pokemon",pokemon);
   const {Individual} = useParams();
-  const found = infoData.find(ele=>{
+
+  const found = infoData.find(ele => {
     return ele.pokemon === Individual.toLowerCase();
   })
 
-  console.log("pokemon data:",found);
+  const prevpoke = '0'+(parseInt(found.NationalID)-1).toString();
+  const nextpoke = '0'+(parseInt(found.NationalID)+1).toString();
+
+  const foundprev = infoData.find(ele => {
+    return ele.NationalID === prevpoke;
+  })
+
+  const foundnext = infoData.find(ele => {
+    return ele.NationalID === nextpoke;
+  })
+
+  const redirectprev = '/Individual/'+foundprev.pokemon;
+  const redirectnext = '/Individual/'+foundnext.pokemon;
+  // console.log("prevpoke:",prevpoke);
+  // console.log("foundprev:",foundprev);
+  // console.log("nextpoke:",nextpoke);
+  // console.log("foundnext:",foundnext);
+  // console.log("current:",found);
   return (
     <div>
       <div className="IPContainer1 d-flex ">
-        <div className="IPBackIcon">
+        <a href='/' ><div className="IPBackIcon">
           <IoMdArrowRoundBack />  
-        </div>
+        </div></a>
         <div className="IPTitle">
           <h3>{found.pokemon}</h3>
         </div>
       </div>
       <div className='IPNavigate'>
-        <div className='IPPrevious'>
-          <GrFormPrevious /> Previous
-        </div>
+      <a href = {redirectprev}><div className='IPPrevious'>
+          <GrFormPrevious /> {prevpoke}
+        </div></a>
         <div className='IPEmpty'></div>
-        <div className='IPNext'>
-          Next <GrFormNext />
-        </div>
+        <a href = {redirectnext}><div className='IPNext'>
+          {nextpoke} <GrFormNext />
+        </div></a>
       </div>
       <div className='container'>
       <div className='IPDataContainer row'>
         <div className='IPImage col-lg-6 col-md-6 col-xs-3'>
-          <img src={found.pokeImg} width="322" height="400" alt="Victini artwork by Ken Sugimori" />
+          <img src={found.pokeImg} width="300" height="400" alt="Victini artwork by Ken Sugimori" />
         </div>
         <div className='IPPokeData col-sm'>
           <div className='IPDataTitle1'>Pokédex data</div>
