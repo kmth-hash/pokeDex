@@ -24,7 +24,6 @@ function MainPage() {
   const [highfirst, setHighfirst] = useState(false);
   const [atoz, setAtoz] = useState(false);
   const [ztoa, setZtoa] = useState(false);
-  const [apply,setApply] = useState(false);
   const [applylist,setApplylist] = useState([]);
   const [text, setText] = useState("");
   const [nullMsg , setNullMsgBox] = useState(0);
@@ -151,11 +150,11 @@ function MainPage() {
     data.forEach(n=>{
       if((n.Pokemon.toLowerCase().startsWith(searchtxt)||
       n.PID.includes(searchtxt)) && (applylist.length == 0)){
-        console.log('found' , n)
-        console.log('1');
+        // console.log('found' , n)
+        // console.log('1');
         c += 1;
         return
-      }else if((n.Pokemon.toLowerCase().startsWith(searchtxt)||
+      }if((n.Pokemon.toLowerCase().startsWith(searchtxt)||
       n.PID.includes(searchtxt)) && (applylist.length != 0)){
         if (applylist.some((ele)=>{ return n.Poketype.includes(ele)})){
           c += 1;
