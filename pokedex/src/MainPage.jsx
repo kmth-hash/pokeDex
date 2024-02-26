@@ -149,17 +149,23 @@ function MainPage() {
     let c = 0;
     // console.log('else')
     data.forEach(n=>{
-      if(n.Pokemon.toLowerCase().startsWith(searchtxt))
-      {
+      if((n.Pokemon.toLowerCase().startsWith(searchtxt)||
+      n.PID.includes(searchtxt)) && (applylist.length == 0)){
         console.log('found' , n)
         console.log('1');
         c += 1;
         return
+      }else if((n.Pokemon.toLowerCase().startsWith(searchtxt)||
+      n.PID.includes(searchtxt)) && (applylist.length != 0)){
+        if (applylist.some((ele)=>{ return n.Poketype.includes(ele)})){
+          c += 1;
+          return
+        }
       }
     })
     console.log('c : ',c);
     setNullMsgBox(c);
-  } , [searchtxt]);
+  } , [searchtxt, applylist]);
 
   return (
     <div>
