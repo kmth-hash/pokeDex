@@ -215,7 +215,7 @@ function MainPage() {
               className={MPSurOnclick}
               onClick={() => {
                 setSurp(!surp),
-                  setSurplist(surpriseMe(data, [], loadnumber)),
+                  setSurplist(surpriseMe(data, [], 0)),
                   setLoadnumber(0),
                   showSort(false),
                   setSearch(false);

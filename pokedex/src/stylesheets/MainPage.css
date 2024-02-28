@@ -116,7 +116,7 @@
 }
 
 .MPAbility{
-    width: 100px;
+    width: 100px !important;
     background-color: palevioletred;
     color:aliceblue;
     padding: 0px 0px 0px;

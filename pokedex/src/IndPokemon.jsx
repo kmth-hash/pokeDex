@@ -43,7 +43,7 @@ function IndPokemon() {
   // console.log("foundnext:",foundnext);
   // console.log("current:",found);
   return (
-    <div>
+    <div className='IPMain'>
       <div className="IPContainer1 d-flex ">
         <a href='/' ><div className="IPBackIcon">
           <IoMdArrowRoundBack />  
