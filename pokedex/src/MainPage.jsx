@@ -29,7 +29,7 @@ function MainPage() {
   const [nullMsg , setNullMsgBox] = useState(0);
   const [typepoke, setPoketype] = useState([]);
   const [loadnumber, setLoadnumber] = useState(0);
-  const [surplist, setSurplist] = useState(surpriseMe(data, [], loadnumber));
+  const [surplist, setSurplist] = useState(surpriseMe(data, [], 0));
   const [searchtxt, setSearchtxt] = useState(text);
   const MPSortOnclick = sort ? "MPOnclick" : null;
   const MPTypeOnclick = search ? "MPOnclick" : null;
@@ -137,8 +137,10 @@ function MainPage() {
   }
 
   function loadMorePoke(){
+    setLoadnumber(loadnumber+1) ;
     setSurplist(surpriseMe(data,surplist,loadnumber));
     console.log("loadnumber:",loadnumber);
+
   }
 
   useEffect(()=>{
@@ -423,15 +425,15 @@ function MainPage() {
                   );
                 })}
                 <div className="d-flex  justify-content-center">
-                  <div
-                    className="MPLoadMore"
-                    onClick={() => {
-                      setLoadnumber(loadnumber + 1), loadMorePoke(loadnumber);
-                    }}
-                  >
-                    Load more Pokémon...
-                  </div>
+                <div className="MPLoadMore"
+                  onClick={() => {
+                    loadMorePoke(loadnumber);
+                  }}
+                >
+                  Load more Pokémon...
                 </div>
+              </div>
+                
               </>
             )}
           </div>
