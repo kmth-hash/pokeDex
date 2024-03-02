@@ -97,6 +97,9 @@ function MainPage() {
     scrollFunction();
   };
 
+  useEffect(()=>{
+    console.log(surplist , surplist.length , 'ldnum');
+  },[surplist]);
   function scrollFunction() {
     if (
       document.body.scrollTop > 20 ||
@@ -137,9 +140,15 @@ function MainPage() {
   }
 
   function loadMorePoke(){
-    setLoadnumber(loadnumber+1) ;
+    if (loadnumber + 1 <= 3) {
+      console.log(loadnumber +" ldnum");
+      setLoadnumber(loadnumber +1);
+    } else {
+      console.log(loadnumber +" ldnum");
+      setLoadnumber(999);
+    }
     setSurplist(surpriseMe(data,surplist,loadnumber));
-    console.log("loadnumber:",loadnumber);
+    console.log("loadnumber:",loadnumber , " ldnum",surplist.length,surplist.length);
 
   }
 
@@ -430,7 +439,7 @@ function MainPage() {
                     loadMorePoke(loadnumber);
                   }}
                 >
-                  Load more Pokémon...
+                  {loadnumber<3 ? 'Load more Pokémon...' : 'Load All'}
                 </div>
               </div>
                 

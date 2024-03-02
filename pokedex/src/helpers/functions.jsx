@@ -8,12 +8,13 @@ const surpriseMe = (mainData , resData , n) =>{
     // if n=0 , returns 10 random pokemons
     //if n=1 , returns 20 random pokemons 
     
-    let totalCount = Math.min((n+1)*10 , mainData.length);
+    let totalCount = Math.min((n+1)*10 , mainData.length-1);
+    // console.log('totalCount' + totalCount );
     while(resData.length<totalCount )
     {
-        let x = Math.ceil((Math.random()*1000)%mainData.length);
+        let x = Math.ceil((Math.random()*1000))%(mainData.length);
         let randomPokemonPicked = mainData[x];
-        // console.log(resData);
+        // console.log(resData ,x, randomPokemonPicked, 'logss');
         if(resData.includes(randomPokemonPicked))
         {
             //if pokemon already in result list
